@@ -1,0 +1,741 @@
+/*
+@titulo: Template Admin;
+@autor: Gabriel Reyes;
+@fecha: 21/10/2017;
+@version: 1.0.1;
+ */
+
+/* #################### LIMPIAMOS LA PAGINA #################### */
+
+*{
+	margin:0;
+	padding: 0;
+	box-sizing: border-box; /* Para poner el padding que no deje espacios */
+	font-family: sans-serif;
+}
+
+main {
+	width: 100%;
+}
+
+section{
+    width: 100%;
+}
+
+/* #################### LIMPIAMOS LA PAGINA #################### */
+
+hr{
+	width: 80%;
+	margin: auto;
+	height: 1px;
+	border: none;
+	/*background: #A319A4;*/
+	background: linear-gradient(60deg, #ffa726, #fb8c00);
+    box-shadow: 0 12px 20px -10px rgba(255, 152, 0, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(255, 152, 0, 0.2);
+}
+
+.row {
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+}
+
+.container {
+    width: 100%;
+}
+
+/* #################### HEADER #################### */
+
+.dti_header{
+	/*background: #A319A4;*/
+	background: linear-gradient(60deg, #ffa726, #fb8c00);
+        box-shadow: 0 12px 20px -10px rgba(255, 152, 0, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(255, 152, 0, 0.2);
+	height: 60px;
+	margin-left: 270px;
+	display: flex;
+	color: #fff;
+	border-radius: 10px;
+	transition: all 300ms;
+}
+
+.dti_header_show{
+	margin-left: 0px;
+}
+
+/* #################### SIDEBAR #################### */
+
+.dti_sidebar{
+	background: #505050;
+	width: 260px;
+	height: 100%;
+	position: fixed;
+	color: #A9AFBB;
+	-webkit-box-shadow: 10px 0px 0px 0px rgba(199,199,199,0.21);
+	-moz-box-shadow: 10px 0px 0px 0px rgba(199,199,199,0.21);
+	box-shadow: 10px 0px 0px 0px rgba(199,199,199,0.21);
+	transform: translateX(0px);
+	transition: all 300ms;
+}
+
+.dti_sidebar span{
+	font-size: 25px;
+}
+
+.dti_sidebar_show{
+	transform: translateX(-260px);
+	transition: all 300ms;
+}
+
+/* #################### LOGO #################### */
+
+.dti_logo{
+	padding: 10px;
+	text-align: center;
+	color: #383838;
+	display: flex !important;
+}
+
+.dti_logo h2{
+	margin-bottom: -10px !important;
+}
+
+.dti_logo img{
+	width: 50px;
+	height: 50px;
+	margin-right: 20px;
+}
+
+/* #################### MENU #################### */
+
+.dti_menu {
+    height:100%;
+    overflow: scroll;
+}
+
+.dti_menu a{
+	text-decoration: none;
+	padding: 5px;
+	color: #A9AFBB;
+}
+
+.dti_menu li {
+	list-style: none;
+	padding: 1px;
+	text-align: left;
+	font-size:11px;
+	margin: 5px 15px 5px 15px;
+}
+
+.dti_menu li span{
+	padding-right: 15px;
+}
+
+.dti_menu_item_active{
+	/*background: #A319A4;*/
+	background: linear-gradient(60deg, #ffa726, #fb8c00);
+    box-shadow: 0 12px 20px -10px rgba(255, 152, 0, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(255, 152, 0, 0.2);
+	border-radius: 10px;
+	margin: 5px 15px 5px 15px;
+}
+
+.dti_menu li:hover {
+    background: #303030;
+    /*color: #A319A4 !important;*/
+    color: linear-gradient(60deg, #ffa726, #fb8c00);
+    box-shadow: 0 12px 20px -10px rgba(255, 152, 0, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(255, 152, 0, 0.2);
+    border-radius: 10px;
+    margin: 5px 15px 5px 15px;
+}
+
+.dti_menu li a:hover {
+    /*color: #A319A4 !important;*/
+    color: linear-gradient(60deg, #ffa726, #fb8c00);
+    box-shadow: 0 12px 20px -10px rgba(255, 152, 0, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(255, 152, 0, 0.2);
+}
+
+.dti_menu_item_active a{
+	color: #fff !important;
+}
+
+/* #################### CONTENIDO #################### */
+
+.dti_contenido{
+	padding: 20px;
+	margin-left: 260px;
+	background: #F7F7F8;
+	transition: all 300ms;
+}
+
+.dti_contenido{
+	/*font-size: 30px;*/
+}
+
+.dti_contenido p{
+	font-size: 14px;
+	margin-top: 15px;
+	border: 1px;
+	padding: 5px;
+}
+
+.dti_contenido_show{
+	margin-left: 0px;	
+}
+
+/* #################### CONFIG MENU #################### */
+
+.dti_config_menu span{
+	margin-top: 8px;
+	margin-left: 10px;
+	transition: all 300ms;
+	cursor: pointer;
+	font-size: 20px;
+	padding: 10px;
+}
+
+.dti_config_menu span:hover{
+	background: rgba(0,0,0,0.4);
+	border-radius: 10px;
+}
+
+/* #################### TITULO #################### */
+
+.dti_titulo{
+    margin: auto;
+    text-align: left;
+    width: 750px;
+}
+
+.margin {
+    margin: 0px !important;
+}
+
+@media only screen and (max-width: 800px) {
+    .dti_titulo{
+        display: none;
+    }
+}
+/*Ocultar a lo que ya es pequeño */
+@media only screen and (max-width: 600px) {
+    .dti_titulo{
+        display: none;
+    }
+}
+
+/* #################### SUBMENU #################### */
+
+.dti_submenu{
+   	margin-top: 2px;
+   	margin-right: 10px;
+   	font-size: 22px;
+   	float: left !important;
+}
+
+.dti_submenu ul li span{
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+.dti_submenu ul{
+	margin-right: 30px;
+}
+
+.dti_submenu ul li a{
+	text-decoration: none !important;
+	color: #fff;
+}
+
+.dti_submenu ul li ul li a{
+	text-decoration: none !important;
+	color: #000;
+}
+
+.dti_submenu ul li a:hover{
+	background: #EEEEEE !important; opacity: 0.5;
+	/*color: #A319A4 !important;*/
+	color: linear-gradient(60deg, #ffa726, #fb8c00);
+    box-shadow: 0 12px 20px -10px rgba(255, 152, 0, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(255, 152, 0, 0.2);
+	cursor: pointer;
+}
+
+.label { margin-right:5px; }
+
+.dti_notificacion{
+	position: absolute;
+	top: 5px;
+	right: 0px;
+	color: #fff;
+	font-size: 10px;
+	background: #f44336;
+  	-moz-border-radius: 0.8em;
+  	-webkit-border-radius: 0.8em;
+  	display: inline-block;
+  	font-weight: bold;
+}
+
+.dti_menu li:hover .children {
+	/*display:block;*/
+}
+ 
+.dti_menu li .children {
+	display: none;
+	background:#303030;/*#EEEEEE;*/
+	/*position: absolute;*/
+	/*width: 150%;*/
+	z-index:1000;
+}
+ 
+.dti_menu li .children li {
+	/*display:block;
+	overflow: hidden;
+	border-bottom: 1px solid rgba(255,255,255,.5);*/
+}
+ 
+.dti_menu li .children li a {
+	/*display: block;*/
+}
+ 
+.dti_menu li .children li a span {
+	/*float: right;*/
+	position: relative;
+	top:3px;
+	margin-right:0;
+	margin-left:0px;
+}
+ 
+.dti_menu li .fa-caret-down {
+	position: relative;
+	top:3px;
+	margin-left:10px;
+	margin-right:0px;
+}
+
+/* #################### PANEL #################### */
+
+.dti_panel{
+	color: #383838;
+	margin: 2px 2px 2px 2px;
+}
+
+.dti_panel_header{
+	/*background: #A319A4;*/
+	background: linear-gradient(60deg, #ffa726, #fb8c00);
+    box-shadow: 0 12px 20px -10px rgba(255, 152, 0, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(255, 152, 0, 0.2);
+	height: 60px;
+	width: 95%;
+	margin: -30px auto 10px;
+	color: #fff;
+	border-radius: 8px;
+	text-align: center;
+	padding-top: 8px;
+	-webkit-box-shadow: 2px 2px 2px 2px rgba(163,25,164,0.6);
+	-moz-box-shadow: 2px 2px 2px 2px rgba(163,25,164,0.6);
+	box-shadow: 2px 2px 2px 2px rgba(163,25,164,0.6);
+}
+
+.dti_panel_body{
+	font-size: 14px;
+}
+
+/* #################### SECTION #################### */
+/*
+.dti_section{
+	margin-top:30px;
+	padding: 10px;
+	background: #FEFEFD;
+	-webkit-box-shadow: 0px 0px 7px 7px rgba(199,199,199,0.21);
+	-moz-box-shadow: 0px 0px 7px 7px rgba(199,199,199,0.21);
+	box-shadow: 0px 0px 7px 7px rgba(199,199,199,0.21);
+}*/
+
+/* #################### CIRCLE #################### */
+
+/* Reducir el tama単o de letra los circle*/
+.circle-tile-number {
+    font-size: 20px;
+}
+
+/* #################### RESPONSIBE PARA MOVIL #################### */
+
+@media only screen and (max-width: 768px) {
+	.dti_sidebar{
+		/*display:none !important;*/
+		margin-left: -260px;	
+	}
+
+	.dti_sidebar_show{
+		margin-left: 260px !important;	
+	}
+
+	.dti_header{
+		margin-left: 0px;
+	}
+	
+	.dti_header_show{
+		margin-left: 260px;	
+	}
+
+	.dti_titulo {
+		font-size: 12px;
+	}
+
+	.dti_submenu ul li{
+		display: inline-block;
+		margin-right: -35px;
+		margin-left: 30px;
+		font-size: 18px;
+	}
+
+	.dti_contenido{
+		margin-left: 0px;	
+	}
+
+	.dti_contenido_show{
+		margin-left: 260px;	
+	}
+	
+	.dti_menu {
+        height: 100% !important;
+        overflow: scroll !important;
+    }
+    
+    .dti_sidebar {
+        height: 100% !important;
+        overflow: scroll !important;
+    }
+}
+
+
+
+/* PRUEBA GABRIEL */
+.nav-pills > li > a {
+  line-height: 24px;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 500;
+  min-width: 100px;
+  text-align: center;
+  color: #9c27b0;
+  transition: all .3s;
+}
+.nav-pills > li > a:hover {
+  background-color: rgba(200, 200, 200, 0.2);
+}
+.nav-pills > li i {
+  display: block;
+  font-size: 30px;
+  padding: 15px 0;
+}
+.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
+  background-color: #9c27b0;
+  color: #FFFFFF;
+  box-shadow: 0 16px 26px -10px rgba(156, 39, 176, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(156, 39, 176, 0.2);
+}
+.nav-pills.nav-pills-info > li.active > a, .nav-pills.nav-pills-info > li.active > a:focus, .nav-pills.nav-pills-info > li.active > a:hover {
+  background-color: #03a9f4;
+  box-shadow: 0 16px 26px -10px rgba(3, 169, 244, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(3, 169, 244, 0.2);
+}
+.nav-pills.nav-pills-success > li.active > a, .nav-pills.nav-pills-success > li.active > a:focus, .nav-pills.nav-pills-success > li.active > a:hover {
+  background-color: #4caf50;
+  box-shadow: 0 16px 26px -10px rgba(76, 175, 80, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(76, 175, 80, 0.2);
+}
+.nav-pills.nav-pills-warning > li.active > a, .nav-pills.nav-pills-warning > li.active > a:focus, .nav-pills.nav-pills-warning > li.active > a:hover {
+  background-color: #fbc02d;
+  box-shadow: 0 16px 26px -10px rgba(251, 192, 45, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(251, 192, 45, 0.2);
+}
+.nav-pills.nav-pills-danger > li.active > a, .nav-pills.nav-pills-danger > li.active > a:focus, .nav-pills.nav-pills-danger > li.active > a:hover {
+  background-color: #f44336;
+  box-shadow: 0 16px 26px -10px rgba(244, 67, 54, 0.56), 0 4px 25px 0px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(244, 67, 54, 0.2);
+}
+
+/*.wrap {
+  width: 450px;
+  margin: 0 auto;
+}*/
+
+.mat-label {
+  display: block;
+  font-size: 12px;
+  transform: translateY(25px);
+  color: #D2D2D2;
+  transition: all 0.5s;
+}
+
+.mat-input {
+  position: relative;
+  background: transparent;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 4px 0;
+  font-size: 12px;
+}
+
+.mat-div {
+  padding: 20px 0 0 0;
+  position: relative;
+}
+
+.mat-div:after, .mat-div:before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #D2D2D2; 
+  bottom: 0;
+  left: 0;
+  transition: all 0.5s;
+}
+
+.mat-div::after {
+  background-color: #9c27b0  !important;
+  transform: scaleX(0)  !important;
+}
+
+.is-active::after {
+  transform: scaleX(1)  !important;
+}
+
+.is-active .mat-label {
+  color: #9c27b0  !important;
+}
+
+.is-completed .mat-label {
+  font-size: 10px !important;
+  transform: translateY(0) !important;
+}
+
+.input-group > .mat-img {
+  background-color: #9c27b0  !important;  
+  color:#FFFFFF;
+}
+
+.btnv2 {
+    border: none;
+    border-radius: 3px;
+    position: relative;
+    padding: 12px 30px;
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    will-change: box-shadow, transform;
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 1, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+    .dti_switch {
+      position: relative;
+      display: block;
+      vertical-align: top;
+      width: 50px;
+      height: 20px;
+      padding: 3px;
+      margin: 0 10px 10px 0;
+      background: linear-gradient(to bottom, #eeeeee, #FFFFFF 25px);
+      background-image: -webkit-linear-gradient(top, #eeeeee, #FFFFFF 25px);
+      border-radius: 8px;
+      box-shadow: inset 0 -1px white, inset 0 1px 1px rgba(0, 0, 0, 0.05);
+      cursor: pointer;
+    }
+    .switch-input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
+    .switch-label {
+      position: relative;
+      display: block;
+      height: inherit;
+      font-size: 9px;
+      text-transform: uppercase;
+      background: #eceeef;
+      border-radius: inherit;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12), inset 0 0 2px rgba(0, 0, 0, 0.15);
+    }
+    .switch-label:before, .switch-label:after {
+      position: absolute;
+      top: 50%;
+      margin-top: -.5em;
+      line-height: 1;
+      -webkit-transition: inherit;
+      -moz-transition: inherit;
+      -o-transition: inherit;
+      transition: inherit;
+    }
+    .switch-label:before {
+      content: attr(data-off);
+      right: 11px;
+      color: #aaaaaa;
+      text-shadow: 0 1px rgba(255, 255, 255, 0.5);
+    }
+    .switch-label:after {
+      content: attr(data-on);
+      left: 11px;
+      color: #FFFFFF;
+      text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+    }
+    .switch-input:checked ~ .switch-label {
+   	  background: #9c27b0;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15), inset 0 0 3px rgba(0, 0, 0, 0.2);
+    }
+    .switch-input:checked ~ .switch-label:before {
+      opacity: 0;
+    }
+    .switch-input:checked ~ .switch-label:after {
+      opacity: 1;
+    }
+    .switch-handle {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 20px;
+      height: 20px;
+      background: linear-gradient(to bottom, #FFFFFF 40%, #f0f0f0);
+      background-image: -webkit-linear-gradient(top, #FFFFFF 40%, #f0f0f0);
+      border-radius: 100%;
+      box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    }
+    .switch-handle:before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin: -3px 0 0 -3px;
+      width: 8px;
+      height: 8px;
+      background: linear-gradient(to bottom, #eeeeee, #FFFFFF);
+      background-image: -webkit-linear-gradient(top, #eeeeee, #FFFFFF);
+      border-radius: 3px;
+      box-shadow: inset 0 1px rgba(0, 0, 0, 0.02);
+    }
+    .switch-input:checked ~ .switch-handle {
+      left: 34px;
+      box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.2);
+    }
+    /* Transition
+        ========================== */
+    .switch-label, .switch-handle {
+      transition: All 0.3s ease;
+      -webkit-transition: All 0.3s ease;
+      -moz-transition: All 0.3s ease;
+      -o-transition: All 0.3s ease;
+    }
+
+    .modal-header{
+        background-color: #9c27b0;
+        color: #FFFFFF;
+    }
+    
+    .modal-footer{
+        margin-top: 10px;
+        height: 60px;
+        background-color: #c8a4b5;
+        color: #FFFFFF;
+    }
+    
+    .modal-body > .input-group{
+        display: inline;
+    }
+    
+    .modal-footer > .btn{
+        margin-top: -10px !important;
+    }
+    
+.dti_section {
+    border-radius: 4px;
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    position: relative;
+    margin-bottom: 20px;
+}
+    
+.linklabel .control-label {
+    color: #f44336;
+    text-decoration: underline red;
+}
+
+/* ############# Bloquear Pantalla mientras se ejecuta AJAX #####################*/
+.dti_block {
+    position:fixed;
+    top:0px;
+    left:0px;
+    z-index:9200;
+    filter:alpha(opacity=65);
+   -moz-opacity:65;
+    opacity:0.65;
+    background:#999;
+    height:100%;
+    width:100%;
+    margin:0px auto;
+    text-align:center;
+    line-height:400px;
+}
+
+.dti_block img {
+    vertical-align:middle;
+}
+
+.dti_menu ul ul {
+    display: none;
+}
+
+.fa-lg {
+    font-size: 2em !important;
+}
+
+.btn_accion {
+    border: 0px solid !important;
+    padding: 0px !important;
+}
+
+.dti-links{
+    -webkit-text-decoration-line: underline !important;
+    text-decoration-line: underline !important;
+    color:#4caf50 !important;
+}
+
+.dti-links:hover{
+    color:#2ab975 !important;
+    cursor:pointer;
+}
+
+.opMedidas
+{
+    width: 100px !important;
+}
+
+.table th, .table td {
+    padding: 0.3rem !important;
+}
+
+.dti_info{
+    width: 300px !important;
+}
+
+.btns_build:hover{
+    background-color: #9c27b0;
+}
+
+.modal-hist
+{
+    max-width: 100% !important;
+}
+
+.modal-normal {
+    max-width: 800px !important;
+}
+
+/*########TOUR######### */
+.fade {
+    opacity: 1;
+}
+
+/*########INPUT CLEAR########*/
+.form-control-clear {
+  z-index: 10;
+  pointer-events: auto;
+  cursor: pointer;
+}

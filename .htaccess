@@ -1,0 +1,23 @@
+# Permite reescribir las peticiones de URL
+RewriteEngine On
+
+RewriteRule !.(js|gif|jpg|png|css|eot|svg|ttf|woff|woff2|map)$ index.php
+#Redireccionar todo HTTP a HTTPS
+#RewriteCond %{SERVER_PORT} 80
+#RewriteRule ^(.*)$ https://optica.dtiware.com/$1 [R,L]
+##RewriteCond %{HTTPS} off
+##RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R,L]
+# Bloquear el directorio
+Options -Indexes
+
+# Si el archivo y la carpeta no existen hacer siguiente reescritura
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Redirecciona todas las peticiones a index
+RewriteRule ^ index.php [QSA,L]
+#RewriteRule ^(.*)$ http://localhost:81/Dti_v3/$1 [R,L]
+# Tiempo de espera
+php_value max_execution_time 3000
+# Habilitar imagenes remotas
+php_value allow_url_fopen On

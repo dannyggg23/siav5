@@ -1,0 +1,72 @@
+<?php defined('BASEPATH') or exit('No se permite acceso directo'); ?>
+<!DOCTYPE HTML>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <base href="<?php echo APP_URL ?>">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta name="description" content="<?php if(isset($descripcion)) {echo $descripcion;} ?>">
+        <meta name="author" content="<?php if(isset($autor)) {echo $autor;} ?>">
+        <title><?php if(isset($titulo)) {echo $titulo;} ?></title>
+        <link rel="Shortcut Icon" href="<?php if(isset($favicon)) {echo $favicon;} ?>" type="image/x-icon"/>
+        <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.0/sandstone/bootstrap.min.css" rel="stylesheet" integrity="sha384-0SEzCkemOL0R1IOfjiayiYyt8BkqxwlmXBmFWMUNeG0BSo/XUh4xAF5ybf+Qr/4x" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script> 
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.bundle.min.js" integrity="sha384-lZmvU/TzxoIQIOD9yQDEpvxp6wEU32Fy0ckUgOH4EIlMOCdR823rg4+3gWRwnX1M" crossorigin="anonymous"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
+        <script src="<?php echo PATH_JS ?>globalfuntions.js" type="text/javascript"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/locales/bootstrap-datepicker.es.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+        <link href="public/css/componentes/tour/hopscotch.min.css" rel="stylesheet" type="text/css"/>
+        <script src="public/js/componentes/tour/hopscotch.min.js" type="text/javascript"></script>
+        <link href="public/loading/loading.css" rel="stylesheet" type="text/css" />
+        <script src="public/loading/loading.js"></script>
+       
+        <!-- Css Declarados -->
+        <?php if(isset($css)) {echo $css;} ?>
+        <!-- Js Declarados -->
+        <?php if(isset($js)) {echo $js;} ?>
+        <!-- Fonts and icons -->
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body onload="deshabilitaRetroceso()">
+        <div id='_AJAX_ERROR_' class="alert_top"></div>
+        <div id='_AJAX_LOADING_' class=""></div>
+        <?php if(isset($layout)) {echo $layout;} ?>
+        <a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+        <?php if(isset($modal)) {echo $modal;} ?>
+        <?php if(isset($script)) {echo $script;} ?>
+        <div class='_MODAL_'></div>
+        <div class='_SCRIPT_'></div>
+        <script>
+            // if(window.screen.availWidth == 1280)window.parent.document.body.style.zoom="85%"
+            // if(window.screen.availWidth == 1366)window.parent.document.body.style.zoom="75%"
+            // if(window.screen.availWidth == 1024)window.parent.document.body.style.zoom="65%"
+            // if(window.screen.availWidth == 800)window.parent.document.body.style.zoom="75%";
+            // if(window.screen.availWidth == 640)window.parent.document.body.style.zoom="60%";
+        </script>
+        
+       
+
+        <script src="public/js/componentes/xtremetheme/custom.min.js" type="text/javascript"></script>
+        <script src="public/js/componentes/xtremetheme/app.min.js" type="text/javascript"></script>
+        <script src="public/js/componentes/xtremetheme/app.init.iconbar.js" type="text/javascript"></script>
+        <script src="public/js/componentes/xtremetheme/app-style-switcher.js" type="text/javascript"></script>
+        <script src="public/js/componentes/xtremetheme/waves.js" type="text/javascript"></script>
+        <script src="public/js/componentes/xtremetheme/sidebarmenu.js" type="text/javascript"></script>
+        <script src="public/js/componentes/xtremetheme/perfect-scrollbar.jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+      
+        
+        
+    </body>
+</html> 

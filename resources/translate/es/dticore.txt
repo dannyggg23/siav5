@@ -1,0 +1,6 @@
+﻿DtiWeb>DtiWeb2|
+User>Usuario|
+Enterprice>Empresa|
+Password>Contraseña|
+Language>Idioma|
+Template>Plantilla|

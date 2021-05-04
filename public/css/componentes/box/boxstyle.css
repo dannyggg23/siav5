@@ -1,0 +1,14 @@
+.col{
+    padding: 1em;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.btn-green{
+    background-color: #8DEA10;
+    border-color:#8DEA10;
+    color:#fff;
+}
+
+.btn-green:hover{color:#fff;background-color:#81D411;border-color:#79C810}.btn-green.focus,.btn-green:focus{box-shadow:0 0 0 3px rgba(134,142,150,.5)}.btn-green.disabled,.btn-green:disabled{background-color:#868e96;border-color:#8DEA10}.btn-green.active,.btn-green:active,.show>.btn-green.dropdown-toggle{background-color:#8DEA10;background-image:none;border-color:#8DEA10}
+
