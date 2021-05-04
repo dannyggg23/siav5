@@ -33,7 +33,7 @@ class Cc10010Model extends \ModeloBase {
     public function detallepedido($pedido){
    
 
-        $sql="SELECT inv00000codigo,descripcion,marca_producto,cantidad,precio,descuento,subtotal from $this->table where cc10000id=$pedido;";
+        $sql="SELECT inv00000codigo,descripcion,marca_producto,cantidad,precio,descuento,subtotal from $this->table where cc10000id='$pedido';";
         return $this->ejecutarConsulta($sql);
     }
 

@@ -97,20 +97,45 @@ class PedidosController extends Controllers
                 $precioDescuento='';
                 $descuentoClienteTotal=0;
                 $descuentoCliente=0;
+                $precioiva=0;
+
                 if($regCc00000->descuento>0){
-                    $precioDescuento='<strike>'.$reg->precio.'</strike><br>';
+                    // $precioDescuento='<strike>'.$reg->precio.'</strike><br>';
     
-                    $descuentoClienteTotal=$reg->precio-(($reg->precio*$regCc00000->descuento)/100);
-                    $descuentoClienteTotal=number_format((float)$descuentoClienteTotal, 2, '.', '');
-                    $descuentoCliente=($reg->precio*$regCc00000->descuento)/100;
-                    $descuentoCliente=number_format((float)$descuentoCliente, 2, '.', '');
+                    // $descuentoClienteTotal=$reg->precio-(($reg->precio*$regClienteModel->descuento)/100);
+                    // $descuentoClienteTotal=number_format((float)$descuentoClienteTotal, 2, '.', '');
+                   
+                    // $descuentoCliente=($reg->precio*$regClienteModel->descuento)/100;
+                    // $descuentoCliente=number_format((float)$descuentoCliente, 2, '.', '');
     
     
-                    $precioDescuento.='<b>'.$descuentoClienteTotal.'</b>';
+                    // $precioDescuento.='<b>'.$descuentoClienteTotal.'</b>';
+    
+                    // $precioiva=number_format((float)($descuentoClienteTotal+($descuentoClienteTotal*0.12)), 2, '.', '');
+    
+                    $precioDescuento='<b>'.$reg->precio.'</b>';
+                    $precioiva=number_format((float)($reg->precio+($reg->precio*0.12)), 2, '.', '');
                     
                 }else{
                     $precioDescuento='<b>'.$reg->precio.'</b>';
+                    $precioiva=number_format((float)($reg->precio+($reg->precio*0.12)), 2, '.', '');
                 }
+
+
+                // if($regCc00000->descuento>0){
+                //     $precioDescuento='<strike>'.$reg->precio.'</strike><br>';
+    
+                //     $descuentoClienteTotal=$reg->precio-(($reg->precio*$regCc00000->descuento)/100);
+                //     $descuentoClienteTotal=number_format((float)$descuentoClienteTotal, 2, '.', '');
+                //     $descuentoCliente=($reg->precio*$regCc00000->descuento)/100;
+                //     $descuentoCliente=number_format((float)$descuentoCliente, 2, '.', '');
+    
+    
+                //     $precioDescuento.='<b>'.$descuentoClienteTotal.'</b>';
+                    
+                // }else{
+                //     $precioDescuento='<b>'.$reg->precio.'</b>';
+                // }
 
              $stockBodega=0;
              $reg->descripcion=str_replace('"',"",$reg->descripcion);
@@ -121,7 +146,7 @@ class PedidosController extends Controllers
              "2"=>$reg->descripcion,
              "3"=>$reg->codoriginal1,
              //"3"=>$reg->descripcioncorta,
-             "4"=>'$.'.$precioDescuento,
+             "4"=>'$.'.$precioiva,
              "5"=>"",
              //"6"=>$reg->linea,
              "6"=>$reg->sublinea,
@@ -191,22 +216,31 @@ class PedidosController extends Controllers
         $subtotal_producto=$cantidad_producto*$precio_producto;
         $subtotal_producto=number_format($subtotal_producto, 2, '.', '');
         $Cc10010 = new Entidades\Cc10010($this->adapter);
-        $Cc10010->setCc10000id($id_cabecera);
-        $Cc10010->setInv00000codigo($id_producto);
-        $Cc10010->setDescripcion($descripcion_producto);
-        $Cc10010->setCosto( $costo_producto);
-        $Cc10010->setBodega($bodega_producto);
-        $Cc10010->setCantidad($cantidad_producto);
-        $Cc10010->setPrecio($precio_producto);
-        $Cc10010->setDescuento($descuento_producto);
-        $Cc10010->setSubtotal($subtotal_producto);
-        $Cc10010->setStock_producto($stock_producto);
-        $Cc10010->setMarca_producto($marcaproducto);
-        $Cc10010->setGuia(0);
-        $Cc10010->setCantidad_guia($cantidad_producto);
-        $Cc10010->setDescuento_cliente($descuentoCliente);
-        $resp=$Cc10010->save_id();
-        echo $resp;
+
+        $resp=$Cc10010->getMultiObj('cc10000id',$id_cabecera,'inv00000codigo',$id_producto);
+
+        if(empty($resp->fetch_object())){
+
+            $Cc10010->setCc10000id($id_cabecera);
+            $Cc10010->setInv00000codigo($id_producto);
+            $Cc10010->setDescripcion($descripcion_producto);
+            $Cc10010->setCosto( $costo_producto);
+            $Cc10010->setBodega($bodega_producto);
+            $Cc10010->setCantidad($cantidad_producto);
+            $Cc10010->setPrecio($precio_producto);
+            $Cc10010->setDescuento($descuento_producto);
+            $Cc10010->setSubtotal($subtotal_producto);
+            $Cc10010->setStock_producto($stock_producto);
+            $Cc10010->setMarca_producto($marcaproducto);
+            $Cc10010->setGuia(0);
+            $Cc10010->setCantidad_guia($cantidad_producto);
+            $Cc10010->setDescuento_cliente($descuentoCliente);
+            $resp=$Cc10010->save_id();
+            echo $resp;
+        }else{
+            echo 'carrito';
+        }
+        
      }
 
 
@@ -338,20 +372,45 @@ class PedidosController extends Controllers
            $precioDescuento='';
            $descuentoClienteTotal=0;
            $descuentoCliente=0;
+           $precioiva=0;
+
+           
            if($regCc00000->descuento>0){
-               $precioDescuento='<strike>'.$reg->precio.'</strike><br>';
+            // $precioDescuento='<strike>'.$reg->precio.'</strike><br>';
 
-               $descuentoClienteTotal=$reg->precio-(($reg->precio*$regCc00000->descuento)/100);
-               $descuentoClienteTotal=number_format((float)$descuentoClienteTotal, 2, '.', '');
-               $descuentoCliente=($reg->precio*$regCc00000->descuento)/100;
-               $descuentoCliente=number_format((float)$descuentoCliente, 2, '.', '');
+            // $descuentoClienteTotal=$reg->precio-(($reg->precio*$regClienteModel->descuento)/100);
+            // $descuentoClienteTotal=number_format((float)$descuentoClienteTotal, 2, '.', '');
+           
+            // $descuentoCliente=($reg->precio*$regClienteModel->descuento)/100;
+            // $descuentoCliente=number_format((float)$descuentoCliente, 2, '.', '');
 
 
-               $precioDescuento.='<b>'.$descuentoClienteTotal.'</b>';
+            // $precioDescuento.='<b>'.$descuentoClienteTotal.'</b>';
+
+            // $precioiva=number_format((float)($descuentoClienteTotal+($descuentoClienteTotal*0.12)), 2, '.', '');
+
+            $precioDescuento='<b>'.$reg->precio.'</b>';
+            $precioiva=number_format((float)($reg->precio+($reg->precio*0.12)), 2, '.', '');
+            
+        }else{
+            $precioDescuento='<b>'.$reg->precio.'</b>';
+            $precioiva=number_format((float)($reg->precio+($reg->precio*0.12)), 2, '.', '');
+        }
+
+        //    if($regCc00000->descuento>0){
+        //        $precioDescuento='<strike>'.$reg->precio.'</strike><br>';
+
+        //        $descuentoClienteTotal=$reg->precio-(($reg->precio*$regCc00000->descuento)/100);
+        //        $descuentoClienteTotal=number_format((float)$descuentoClienteTotal, 2, '.', '');
+        //        $descuentoCliente=($reg->precio*$regCc00000->descuento)/100;
+        //        $descuentoCliente=number_format((float)$descuentoCliente, 2, '.', '');
+
+
+        //        $precioDescuento.='<b>'.$descuentoClienteTotal.'</b>';
                
-           }else{
-               $precioDescuento='<b>'.$reg->precio.'</b>';
-           }
+        //    }else{
+        //        $precioDescuento='<b>'.$reg->precio.'</b>';
+        //    }
 
 
             $data[]=array(
@@ -361,7 +420,7 @@ class PedidosController extends Controllers
              "2"=>$reg->descripcion,
              "3"=>$reg->descripcioncorta,
              //"4"=>'<h4>$'.$reg->precio.'</h4><br><h4>'.$this->session->get('bodUsuario').":".$stock_producto.'</h4>',
-             "4"=>'$.'.$precioDescuento,
+             "4"=>'$.'.$precioiva,
              "5"=>'<b>'.$stock_producto.'</b>',
              "6"=>$reg->linea,
              "7"=>$reg->sublinea,
@@ -689,6 +748,7 @@ class PedidosController extends Controllers
             'iva_cc_tem'=> $regcc10000->iva,
             'total_cc_tem'=> $regcc10000->total,
             'descuento_cc_tem'=> $regcc10000->descuento,
+            'descuento_porce_cc'=> $regcc10000->descuento_porce,
             'monto_abonado'=>$resp['total']
         );
         $contenedor = globalFunctions::renderizar($this->website,array(

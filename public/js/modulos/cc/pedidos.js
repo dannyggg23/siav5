@@ -178,6 +178,37 @@ function revisarAbonos(documento){
 
   }
 
+  var tabla2;
+
+  function listarDetalle(id,documento){
+    tabla2 = $("#tblDetalles").dataTable({
+      language: {
+        searchPlaceholder: "Filtrar productos",
+        search: "BUSCAR",
+      },
+      "bPaginate": false,
+      "bLengthChange": false,
+      "bFilter": false,
+      "bInfo": false,
+      "bAutoWidth": false,
+      "ajax": {
+          url: "cc/listarDetallePedido",
+          type: "post",
+          data:{'documento':id},
+          dataType: "json",
+          error: function(e) {
+              console.log(e.responseText);
+          }
+      },
+      "bDestroy": true,
+      "iDisplayLength": 20, 
+      "order": [
+              [0, "desc"]
+          ]
+  }).DataTable();
+  $('#myModal').modal('show');
+  }
+
   
 
 init();

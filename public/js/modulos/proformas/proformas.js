@@ -86,6 +86,8 @@ function listar() {
               modificarSubototales();
               //aplicarDescuento();
 
+               }else if(data.trim()=="carrito"){
+                swal.fire("ALERTA!", "El producto ya se encuentra en el carrito (AUMENTE LA CANTIDAD)", "info");
                }
                else
                {

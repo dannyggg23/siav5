@@ -227,21 +227,41 @@ class dti_layout_pedidos {
               </div>
           </div>
       </div>
+
+      <div class="col-sm-12 col-lg-12">
+        <div class="card card-hover bg-danger">
+            <div class="card-body">
+                    <div class=" text-white">
+                        <h5 align=right><span>Subtotal :</span> $ '.number_format($valores['subtotal_cc_tem'], 2, '.', '').'</h5>
+                        <h5 align=right><span>Descuento :</span> $ '.number_format($valores['descuento_cc_tem'], 2, '.', '').'</h5>
+                        <h5 align=right><span>% Descuento :</span> '.number_format($valores['descuento_porce_cc'], 2, '.', '').' %</h5>
+                        <h5 align=right><span>Iva :</span> $ '.number_format($valores['iva_cc_tem'], 2, '.', '').'</h5>
+                        <h4 align=right><span>Total :</span> $ '.number_format($valores['total_cc_tem'], 2, '.', '').'</h4>
+                        <h4 align=right><span>Abonado :</span> $ '.number_format($valores['monto_abonado'], 2, '.', '').'</h4>
+                        <h4 align=right><span>Pendiente :</span> $ '.number_format($resp, 2, '.', '').'</h4>
+                        <button type="button" class="btn btn-block btn-dark" onclick="abonar('.number_format($valores['total_cc_tem'], 2, '.', '').','.number_format($valores['monto_abonado'], 2, '.', '').')">ABONAR</button>
+                        <button type="button" class="btn btn-block btn-dark" onclick="revisarAbonos()">REVISAR ABONOS</button>
+                    </div>
+            </div>
+        </div>
+    </div>
+
           <div class="col-sm-12 col-lg-12">
               <div class="card card-hover bg-cyan">
                   <div class="card-body">
                       <div class="d-flex">
                           <div class=" text-white">
                           <h4><span>Cliente</span></h4>
-                          <h3><strong>Ruc: </strong> '.$cliente['ruc'].'</h3>
-                          <h3><strong>Cliente: </strong> '.$cliente['cliente'].'</h3>
-                          <h3><strong>Razon Social: </strong> '.$cliente['razonsocial'].'</h3>
+                          <h5><strong>Ruc: </strong> '.$cliente['ruc'].'</h5>
+                          <h5><strong>Cliente: </strong> '.$cliente['cliente'].'</h5>
+                          <h5><strong>Razon Social: </strong> '.$cliente['razonsocial'].'</h5>
                           </div>
                       </div>
                   </div>
               </div>
           </div>
           <!-- column -->
+
           <div class="col-sm-12 col-lg-12">
               <div class="card card-hover bg-purple">
                   <div class="card-body">
@@ -257,22 +277,8 @@ class dti_layout_pedidos {
               </div>
           </div>
           <!-- colum -->
-          <div class="col-sm-12 col-lg-12">
-              <div class="card card-hover bg-danger">
-                  <div class="card-body">
-                          <div class=" text-white">
-                              <h3 align=right><span>Subtotal :</span> $ '.number_format($valores['subtotal_cc_tem'], 2, '.', '').'</h3>
-                              <h3 align=right><span>Descuento :</span> $ '.number_format($valores['descuento_cc_tem'], 2, '.', '').'</h3>
-                              <h3 align=right><span>Iva :</span> $ '.number_format($valores['iva_cc_tem'], 2, '.', '').'</h3>
-                              <h2 align=right><span>Total :</span> $ '.number_format($valores['total_cc_tem'], 2, '.', '').'</h2>
-                              <h2 align=right><span>Abonado :</span> $ '.number_format($valores['monto_abonado'], 2, '.', '').'</h2>
-                              <h2 align=right><span>Pendiente :</span> $ '.number_format($resp, 2, '.', '').'</h2>
-                              <button type="button" class="btn btn-block btn-dark" onclick="abonar('.number_format($valores['total_cc_tem'], 2, '.', '').','.number_format($valores['monto_abonado'], 2, '.', '').')">ABONAR</button>
-                              <button type="button" class="btn btn-block btn-dark" onclick="revisarAbonos()">REVISAR ABONOS</button>
-                          </div>
-                  </div>
-              </div>
-          </div>
+
+        
       </div>
       </div>
       </div>
@@ -362,7 +368,7 @@ class dti_layout_pedidos {
           </div>
   
           <!-- MODAL SELECT TRANSPORTISTAS  -->
-  
+   
           <div class="modal fade" id="modalTransportistas" role="dialog">
             <div class="modal-dialog modal-lg">
               <!-- Modal content-->

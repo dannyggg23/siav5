@@ -751,8 +751,18 @@ class ProformasController extends Controllers
        $subtotal_producto=$cantidad_producto*$precio_producto;
        $subtotal_producto=number_format($subtotal_producto, 2, '.', '');
 
-       $resp=$conf->GuardarCarrito($id_cabecera, $id_producto, $descripcion_producto, $costo_producto, $stock_producto, $bodega_producto, $cantidad_producto, $precio_producto, $descuento_producto, $subtotal_producto,$marcaProducto,$descuentoCliente);
-       echo $resp;
+       $Sis50300 = new Entidades\Sis50300($this->adapter);
+       $resp=$Sis50300->getMultiObj('id_cabecera',$id_cabecera,'id_producto',$id_producto);
+
+       if(empty($resp->fetch_object())){
+
+        $resp=$conf->GuardarCarrito($id_cabecera, $id_producto, $descripcion_producto, $costo_producto, $stock_producto, $bodega_producto, $cantidad_producto, $precio_producto, $descuento_producto, $subtotal_producto,$marcaProducto,$descuentoCliente);
+        echo $resp;
+       }else{
+           echo 'carrito';
+       }
+       
+      
     }
 
    

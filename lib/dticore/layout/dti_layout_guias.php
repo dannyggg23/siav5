@@ -129,6 +129,49 @@ class dti_layout_guias {
                     <h4 class="modal-title">MONTOS ABONADOS</h4>
                   </div>
                   <div class="modal-body">
+                  <table id="tblDetalles" class="table table-striped table-bordered table-condensed table-hover" >
+                    <thead >
+                      <!-- titulos de las tablas -->
+                            <th>Codigo</th>
+                          <th>Descripcion</th>
+                          <th>Marca</th>
+                          <th>Cantidad</th>
+                          <th>Precio</th>  
+                          <th>Descuento</th>  
+                          <th>Subtotal</th>  
+                      </thead>
+                      <tbody>                            
+                      </tbody>
+                      <tfoot>
+                          <th>Codigo</th>
+                          <th>Descripcion</th>
+                          <th>Marca</th>
+                          <th>Cantidad</th>
+                          <th>Precio</th>  
+                          <th>Descuento</th>  
+                          <th>Subtotal</th>  
+                      </tfoot>
+                    </table>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+ 
+            <!-- MODAL DETALLES  -->
+            <div class="modal fade" id="myModalDetalle" role="dialog">
+              <div class="modal-dialog modal-lg">
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">MONTOS ABONADOS</h4>
+                  </div>
+                  <div class="modal-body">
                   <table id="tblMontos" class="table table-striped table-bordered table-condensed table-hover" >
                   <thead >
                     <!-- titulos de las tablas -->
@@ -155,6 +198,7 @@ class dti_layout_guias {
                 </div>
               </div>
             </div>
+
         ';
         dti_core::set('css', '<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">');
         dti_core::set('script', '<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>');

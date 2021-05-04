@@ -26,3 +26,17 @@
     color: #fff;
   }
   
+
+  .dt-buttons{
+    display: none !important;
+}
+
+.dataTables_filter{
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+}
+
+th { font-size: 13px; }
+td { font-size: 12px; }

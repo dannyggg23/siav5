@@ -412,7 +412,7 @@ class dti_layout_proformas {
                <th>RUC</th>
                <th>CLIENTE</th>
                <th>RAZON_SOCIAL</th>
-               <th>VENDEDOR</th>
+               <th>VEND</th>
                <th>NIVEL_PRECIO</th>
                <th>DIRECCION</th>
                <th>TELEFONO</th>
@@ -426,7 +426,7 @@ class dti_layout_proformas {
                 <th>RUC</th>
                 <th>CLIENTE</th>
                 <th>RAZON_SOCIAL</th>
-                <th>VENDEDOR</th>
+                <th>VEND</th>
                 <th>NIVEL_PRECIO</th>
                 <th>DIRECCION</th>
                 <th>TELEFONO</th>

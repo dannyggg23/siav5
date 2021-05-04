@@ -179,7 +179,8 @@ class CcController extends Controllers
 
                 $data[]=array(
                     "0"=>'<button class="btn btn-warning" title="Ingresar un abono" onclick="abonar('.$reg->total.','.$reg->monto_abonado.','."'".$reg->documento."'".')"><span class="fa fa-plus"></span></button>'.
-                    '  <button class="btn btn-info" title="Revisar los abonos" onclick="revisarAbonos('."'".$reg->documento."'".')"><span class="fa fa-list"></span></button>'.
+                   // '  <button class="btn btn-info" title="Revisar los abonos" onclick="revisarAbonos('."'".$reg->documento."'".')"><span class="fa fa-list"></span></button>'.
+                   '  <a class="btn btn-primary" title="Detalle de pedido" onclick="listarDetalle('.$reg->id.','."'".$reg->documento."'".')" ><span class="fa fa-list"></span></a>'.
                     '  <a class="btn btn-success" title="Editar el pedido" href=pedidos/?pedido='.$reg->documento.'><span class="fa fa-info"></span></a>'.
                     $eliminar,
                     "1"=>$reg->documento,
@@ -283,6 +284,7 @@ class CcController extends Controllers
         if (empty($this->session->get('usuario'))) $this->redirect("default","login");
         $conf= new \Models\Cc10010Model($this->adapter);
         $id=isset($param['documento'])? $conf->limpiarCadenaString($param["documento"]):"";
+        //print_r($id);
         $rspta=$conf->detallepedido($id);
         $data=array();
         while ($reg=$rspta->fetch_object()){
@@ -294,7 +296,7 @@ class CcController extends Controllers
             "3"=>$reg->cantidad,
             "4"=>$reg->precio,
             "5"=>$reg->descuento,
-            "6"=>$reg->subtotal
+            "6"=>number_format($reg->subtotal*1.12,2,'.','')
         );
             }
             $results = array(
@@ -2038,6 +2040,9 @@ class CcController extends Controllers
     echo json_encode($results);
 
     }
+
+
+ 
 
     public function listarDetallePedidoAprobar($param=array()){
 

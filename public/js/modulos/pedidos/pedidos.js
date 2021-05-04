@@ -94,9 +94,13 @@ function listar() {
           modificarSubototales();
 
            }
+           
+           else if(data.trim()=="carrito"){
+            swal.fire("ALERTA!", "El producto ya se encuentra en el carrito (AUMENTE LA CANTIDAD)", "info");
+           }
            else
            {
-            swal.fire("ERROR", "Error al agregar el producto", "error");
+            swal.fire("ERROR", "Error al agregar el producto o ya se encuentra en el carrito", "error");
            }
          }
      }).fail(function( jqXHR, textStatus, errorThrown ) {
@@ -558,6 +562,8 @@ function llenarCarritoTemporal(){
     });
 
     }
+
+ 
 
     
 
