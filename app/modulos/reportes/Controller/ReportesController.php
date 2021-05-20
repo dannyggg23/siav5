@@ -366,7 +366,13 @@ class ReportesController extends Controllers
         $mail->Body=$html;
         $mail->AltBody='Estimado(a) se realizo un pedido de MUNDOMOTRIZ ';
         $exito = $mail->Send();
+
+        $conf= new Entidades\Sis50200($this->adapter);
+        $conf->updateMultiColum('id_usuario',"040","id",$this->session->get('idCarritoTemporal'));
+
         }
+
+    
 
         //
 
