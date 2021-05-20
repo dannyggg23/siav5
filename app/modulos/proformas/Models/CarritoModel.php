@@ -20,7 +20,7 @@ class CarritoModel extends \ModeloBase {
        
         $query=" SELECT `id`, `id_usuario`, `id_cliente`, `id_sucursal`, `fecha_cc_tem`, `subtotal_cc_tem`, `iva_cc_tem`, `total_cc_tem`, `descuento_cc_tem` 
         FROM $this->table
-        where $this->table.id_usuario='$idUsuario' AND $this->table.id_cliente='$idCliente' AND $this->table.id_sucursal='$idSucursal'";
+        where $this->table.id_usuario='$idUsuario' AND $this->table.id_cliente='$idCliente' AND $this->table.id_sucursal='$idSucursal' order by id desc";
        return $this->ejecutarConsulta($query);
 
     }
