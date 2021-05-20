@@ -404,7 +404,7 @@ class TransferenciasController extends Controllers
                 <TD WIDTH=64 STYLE="border: 1px solid #00000a; padding-top: 0in; padding-bottom: 0in; padding-left: 0.08in; padding-right: 0.08in">
                     <P ALIGN=CENTER>'.$resgInv10000Model->cantidad.'</P>
                 </TD>
-             </TR>';
+             </TR>' ;
         }
 
        //Creamos la instancia de la clase PHPMailer y configuramos la cuenta

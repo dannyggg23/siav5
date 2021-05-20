@@ -260,7 +260,7 @@ class ReportesController extends Controllers
         $html.='    <div>';
         $html.='        <div style="float:left;width: 48%;margin-right: 15px;">';
         $html.='        <div style="height: 130px">';
-        $html.='            <img alt="SIN LOGO" class="imgLogo" src="public/images/logoAllparts.jpg" /><br><br><br><br>';
+        $html.='            <img alt="SIN LOGO" class="imgLogo" src="http://proforma.allparts.com.ec/public/images/logoAllparts.jpg" /><br><br><br><br>';
         $html.='        </div>';
         $html.= $sucursal;
         $html.='<div style="clear:both"></div>';
@@ -341,6 +341,35 @@ class ReportesController extends Controllers
         $html.='</div>';
         $html.='</body>';
         $html.='</html>';
+
+
+        //ENVIAR CORREO A JORGE ORDOÑES
+        if($_SESSION['usuario']=="888"){
+            $sis00100 = new Entidades\Sis00100($this->adapter);
+        $respSis00100=$sis00100->getMultiObj('id',1);
+        $regSis00100=$respSis00100->fetch_object();
+        $mail=new \PHPMailer\PHPMailer\PHPMailer();
+        $mail->SMTPDebug  = 2;
+        $mail->Mailer="smtp";
+        $mail->Helo = "www.allparts.com.ec"; //Muy importante para que llegue a hotmail y otros
+        $mail->SMTPAuth=true;
+        $mail->Host=$regSis00100->smtp_hostname;
+        $mail->Port=$regSis00100->smtp_port; //depende de lo que te indique tu ISP. El default es 25, pero nuestro ISP lo tiene puesto al 26
+        $mail->Username=$regSis00100->smtp_username;
+        $mail->Password=$regSis00100->smtp_password;
+        $mail->From=$regSis00100->smtp_username;
+        $mail->FromName='MUNDOMOTRIZ ';
+        $mail->Subject = "PEDIDO MUNDOMOTRIZ";
+        $mail->Timeout=60;
+        $mail->IsHTML(true);
+        $mail->AddAddress("dggarcia@iav.com.ec");
+        $mail->Body=$html;
+        $mail->AltBody='Estimado(a) se realizo un pedido de MUNDOMOTRIZ ';
+        $exito = $mail->Send();
+        }
+
+        //
+
         
         require 'vendor/autoload.php';
 
@@ -524,11 +553,11 @@ class ReportesController extends Controllers
             <TBODY>
                 <TR VALIGN=TOP>
                     <TD WIDTH=332 HEIGHT=99 STYLE="border: none; padding: 0in">
-                        <P ALIGN=CENTER><IMG SRC="public/img/reporte_factura_html_9635c91.jpg" NAME="Imagen 1" ALIGN=LEFT HSPACE=12 WIDTH=324 HEIGHT=105 BORDER=0><BR>
+                        <P ALIGN=CENTER><IMG SRC="http://proforma.allparts.com.ec/public/img/reporte_factura_html_9635c91.jpg" NAME="Imagen 1" ALIGN=LEFT HSPACE=12 WIDTH=324 HEIGHT=105 BORDER=0><BR>
                         </P>
                     </TD>
                     <TD WIDTH=332 STYLE="border: none; padding: 0in">
-                        <P ALIGN=CENTER><IMG SRC="public/img/reporte_factura_html_439866b3.png" NAME="Imagen 2" ALIGN=LEFT HSPACE=12 WIDTH=336 HEIGHT=105 BORDER=0><BR>
+                        <P ALIGN=CENTER><IMG SRC="http://proforma.allparts.com.ec/public/img/reporte_factura_html_439866b3.png" NAME="Imagen 2" ALIGN=LEFT HSPACE=12 WIDTH=336 HEIGHT=105 BORDER=0><BR>
                         </P>
                     </TD>
                 </TR>
@@ -887,11 +916,11 @@ class ReportesController extends Controllers
             <TBODY>
                 <TR VALIGN=TOP>
                     <TD WIDTH=332 HEIGHT=99 STYLE="border: none; padding: 0in">
-                        <P ALIGN=CENTER><IMG SRC="public/img/reporte_factura_html_9635c91.jpg" NAME="Imagen 1" ALIGN=LEFT HSPACE=12 WIDTH=324 HEIGHT=105 BORDER=0><BR>
+                        <P ALIGN=CENTER><IMG SRC="http://proforma.allparts.com.ec/public/img/reporte_factura_html_9635c91.jpg" NAME="Imagen 1" ALIGN=LEFT HSPACE=12 WIDTH=324 HEIGHT=105 BORDER=0><BR>
                         </P>
                     </TD>
                     <TD WIDTH=332 STYLE="border: none; padding: 0in">
-                        <P ALIGN=CENTER><IMG SRC="public/img/reporte_factura_html_439866b3.png" NAME="Imagen 2" ALIGN=LEFT HSPACE=12 WIDTH=336 HEIGHT=105 BORDER=0><BR>
+                        <P ALIGN=CENTER><IMG SRC="http://proforma.allparts.com.ec/public/img/reporte_factura_html_439866b3.png" NAME="Imagen 2" ALIGN=LEFT HSPACE=12 WIDTH=336 HEIGHT=105 BORDER=0><BR>
                         </P>
                     </TD>
                 </TR>

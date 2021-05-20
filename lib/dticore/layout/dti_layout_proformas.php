@@ -609,47 +609,73 @@ class dti_layout_proformas {
     </div>
     </div>';
 
-    if($cliente['cupoPermitido']<0 || $cliente['condicionpago'] != 'CONTADO'){
+    if($_SESSION['usuario']=="888"){
         $botones='
              <div class="col-sm-12 col-lg-8">
             <div class="row">
             <div class="col-sm-12 col-lg-3">
             <a href="proformas/index"  class="btn btn-danger btn-block"> ATRAS </a>
             </div>
-            <div class="col-sm-12 col-lg-6">
-            <button type="button" onclick="enviarCobranzas()"  class="btn btn-info btn-block"> ENVIAR A COBRANZAS </button>
-            </div>
+         
         
-            <div class="col-sm-12 col-lg-3">
-            <button type="button" onclick="imprimirProforma()"  class="btn btn-dark btn-block"> <i class="fa fa-print" aria-hidden="true"></i> </button>
+            <div class="col-sm-12 col-lg-9">
+            <button type="button" title="ENVIAR PEDIDO" onclick="imprimirProforma()"  class="btn btn-dark btn-block"> <i class="fa fa-print" aria-hidden="true"></i> </button>
             </div>
             </div>
             <br>
             <br>
         ';
+    }else{
+        if($cliente['cupoPermitido']<0 || $cliente['condicionpago'] != 'CONTADO'){
+            $botones='
+                     <div class="col-sm-12 col-lg-8">
+                    <div class="row">
+                    <div class="col-sm-12 col-lg-3">
+                    <a href="proformas/index"  class="btn btn-danger btn-block"> ATRAS </a>
+                    </div>
+                    <div class="col-sm-12 col-lg-3">
+                    <button type="button" onclick="enviarCobranzas()"  class="btn btn-info btn-block"> ENVIAR A COBRANZAS </button>
+                    </div>
+        
+                    <div class="col-sm-12 col-lg-3">
+                    <button type="button" onclick="realizarGuia()"  class="btn btn-info btn-block"> HACER PEDIDO </button>
+                    </div>
+                
+                    <div class="col-sm-12 col-lg-3">
+                    <button type="button" onclick="imprimirProforma()"  class="btn btn-dark btn-block"> <i class="fa fa-print" aria-hidden="true"></i> </button>
+                    </div>
+                    </div>
+                    <br>
+                    <br>
+                ';
+        }
+            //    
+            // }
+        else{
+            $botones='
+                <div class="col-sm-12 col-lg-8">
+                <div class="row">
+                <div class="col-sm-12 col-lg-3">
+                <a href="proformas/index"  class="btn btn-danger btn-block"> ATRAS </a>
+                </div>
+                <div class="col-sm-12 col-lg-3">
+                <button type="button" onclick="realizarGuia()"  class="btn btn-info btn-block"> HACER PEDIDO </button>
+                </div>
+                <div class="col-sm-12 col-lg-3">
+                <button type="button" onclick="realizarFactura()"  class="btn btn-success btn-block"> HACER FACTURA</button>
+                </div>
+                <div class="col-sm-12 col-lg-3">
+                <button type="button" onclick="imprimirProforma()"  class="btn btn-dark btn-block"> <i class="fa fa-print" aria-hidden="true"></i> </button>
+                </div>
+                </div>
+                <br>
+                <br> 
+            ';
+    
+        }
     }
-    else{
-        $botones='
-            <div class="col-sm-12 col-lg-8">
-            <div class="row">
-            <div class="col-sm-12 col-lg-3">
-            <a href="proformas/index"  class="btn btn-danger btn-block"> ATRAS </a>
-            </div>
-            <div class="col-sm-12 col-lg-3">
-            <button type="button" onclick="realizarGuia()"  class="btn btn-info btn-block"> HACER PEDIDO </button>
-            </div>
-            <div class="col-sm-12 col-lg-3">
-            <button type="button" onclick="realizarFactura()"  class="btn btn-success btn-block"> HACER FACTURA</button>
-            </div>
-            <div class="col-sm-12 col-lg-3">
-            <button type="button" onclick="imprimirProforma()"  class="btn btn-dark btn-block"> <i class="fa fa-print" aria-hidden="true"></i> </button>
-            </div>
-            </div>
-            <br>
-            <br> 
-        ';
 
-    }
+    // else 
 
     $revisar.=$botones.'
    

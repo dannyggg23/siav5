@@ -384,7 +384,14 @@ class ProformasController extends Controllers
     public function listClientesAjax(){
         if (empty($this->session->get('usuario'))) $this->redirect("default","login");
         $conf= new \Models\ClientesModel($this->adapter);
-        $rspta=$conf->ListarClientes();
+        if($this->session->get('usuario')=="888"){
+            
+            $rspta=$conf->ListarClientesMM();
+
+        }else{
+            $rspta=$conf->ListarClientes();
+        }
+        
         $data= Array();
         while ($reg=$rspta->fetch_object()){
                 $data[]=array(
@@ -551,7 +558,14 @@ class ProformasController extends Controllers
         if (empty($this->session->get('usuario'))) $this->redirect("default","login");
         $conf= new \Models\ClientesModel($this->adapter);
         $param['busqueda']=str_replace(" ","%",$param['busqueda']);
-        $rspta=$conf->ListarClientesBusqueda($param['busqueda']);
+
+        if($this->session->get('usuario')=="888"){
+            $rspta=$conf->ListarClientesMM();
+        }else{
+            $rspta=$conf->ListarClientesBusqueda($param['busqueda']);
+        }
+
+       
         $data= Array();
  		while ($reg=$rspta->fetch_object()){
  			$data[]=array(

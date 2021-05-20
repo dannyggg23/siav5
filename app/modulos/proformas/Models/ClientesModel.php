@@ -27,6 +27,14 @@ class ClientesModel extends \ModeloBase {
         return $this->ejecutarConsulta($query);
     }
 
+    public function ListarClientesMM(){
+       
+        $query="SELECT `id`, `ruc`, `cliente`, `razonsocial`,categoria, `vendedor`, `nivelprecio`, `direccion`, `telefono`, `ciudad`, `provincia`, `pais`, `cupo`, `correo`, `idcorto`, `contacto`, `condicionpago`, `descuento`, `descuento_outlet`, `bajomonto`, `suspendido`, `inactivo`, `fechaCreacion`, `relacionado` 
+        FROM $this->table WHERE ruc = '1792151473001'
+        ORDER BY id DESC ";
+        return $this->ejecutarConsulta($query);
+    }
+
 
     public function ListarClientesAll(){
        
