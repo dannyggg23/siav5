@@ -349,7 +349,7 @@ class ReportesController extends Controllers
         $respSis00100=$sis00100->getMultiObj('id',1);
         $regSis00100=$respSis00100->fetch_object();
         $mail=new \PHPMailer\PHPMailer\PHPMailer();
-        $mail->SMTPDebug  = 2;
+        $mail->SMTPDebug  = 0;
         $mail->Mailer="smtp";
         $mail->Helo = "www.allparts.com.ec"; //Muy importante para que llegue a hotmail y otros
         $mail->SMTPAuth=true;
