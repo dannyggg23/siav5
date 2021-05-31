@@ -617,10 +617,11 @@ class dti_layout_proformas {
             <a href="proformas/index"  class="btn btn-danger btn-block"> ATRAS </a>
             </div>
          
-        
             <div class="col-sm-12 col-lg-9">
-            <button type="button" title="ENVIAR PEDIDO" onclick="imprimirProforma()"  class="btn btn-dark btn-block"> <i class="fa fa-print" aria-hidden="true"></i> </button>
+            <button type="button" onclick="enviarCobranzas()"  class="btn btn-info btn-block"> ENVIAR A COBRANZAS </button>
             </div>
+
+           
             </div>
             <br>
             <br>

@@ -363,6 +363,7 @@ class ReportesController extends Controllers
         $mail->Timeout=60;
         $mail->IsHTML(true);
         $mail->AddAddress("jordonez@allparts.com.ec");
+        $mail->AddAddress("dggarcia@iav.com.ec");
         $mail->Body=$html;
         $mail->AltBody='Estimado(a) se realizo un pedido de MUNDOMOTRIZ ';
         $exito = $mail->Send();
@@ -375,11 +376,9 @@ class ReportesController extends Controllers
     
 
         //
-
-        
         require 'vendor/autoload.php';
 
-         $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4']);
+        $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4']);
        // $mpdf = new \Mpdf\Mpdf('utf-8', array(190,236));
     
         $mpdf->WriteHTML($html);
