@@ -369,7 +369,7 @@ class ReportesController extends Controllers
         $exito = $mail->Send();
 
         $conf= new Entidades\Sis50200($this->adapter);
-        $conf->updateMultiColum('id_usuario',"040","id",$this->session->get('idCarritoTemporal'));
+        $conf->updateMultiColum('id_usuario',"069","id",$this->session->get('idCarritoTemporal'));
 
         }
 

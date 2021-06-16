@@ -1393,7 +1393,7 @@ class GuiaController extends Controllers
                         $guiaCabeceraEntidad->setDocumento($numPedido);
                         $guiaCabeceraEntidad->setFecha(date('Y-m-d'));
                         if($regCabecera->id_usuario=="888"){
-                            $regCabecera->id_usuario="040";
+                            $regCabecera->id_usuario="069";
                             $pedidoMundoMotriz=true;
                         }
                         $guiaCabeceraEntidad->setUsuario($regCabecera->id_usuario);
