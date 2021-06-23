@@ -58,6 +58,16 @@ class ProformasModel extends \ModeloBase {
        
         return $this->ejecutarConsulta($query);
     }
+
+    public function TieneDescuento($codigo){
+
+        $this->precio_desc=isset($_SESSION['bdcliente'])?$_SESSION['bdcliente'].'.precio_desc':'precio_desc';
+        $query="SELECT * FROM $this->precio_desc where codigo ='$codigo'";
+       
+        return $this->ejecutarConsulta($query);
+    }
+
+    
     
     public function ListarBusquedaTransferencia($busqueda){
         $this->inv00020=isset($_SESSION['bdcliente'])?$_SESSION['bdcliente'].'.inv00020':'inv00020';

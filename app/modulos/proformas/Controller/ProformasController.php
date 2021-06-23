@@ -170,11 +170,31 @@ class ProformasController extends Controllers
             $rspta=$conf->ListarBusqueda($this->session->get('nivelprecio'),$param['busqueda']);
             $data= Array();
              while ($reg=$rspta->fetch_object()){
-            $reg->descripcion=str_replace('"',"",$reg->descripcion);
-            $reg->descripcion = preg_replace("/[\r\n|\n|\r]+/", PHP_EOL, $reg->descripcion);
-            $buscar=array(chr(13).chr(10), "\r\n", "\n", "\r");
-            $reemplazar=array("", "", "", "");
-            $reg->descripcion=str_ireplace($buscar,$reemplazar,$reg->descripcion);
+            $rsptaDesc=$conf->TieneDescuento($reg->codigo)->fetch_object();
+            $descrpJs="";
+
+            if(!empty($rsptaDesc)){
+
+                $reg->descripcion=str_replace('"',"",$reg->descripcion);
+                $reg->descripcion = preg_replace("/[\r\n|\n|\r]+/", PHP_EOL, $reg->descripcion);
+                $buscar=array(chr(13).chr(10), "\r\n", "\n", "\r");
+                $reemplazar=array("", "", "", "");
+                $reg->descripcion=str_ireplace($buscar,$reemplazar,$reg->descripcion);
+                $descrpJs=$reg->descripcion;
+                $reg->descripcion="<p>  $reg->descripcion <strong style='color: red'>**PROMOCION $rsptaDesc->descuento % DE DESC ** </strong> </p>";
+
+                $reg->precio=$reg->precio-($reg->precio*$rsptaDesc->descuento)/100;
+                
+            }else{
+                $reg->descripcion=str_replace('"',"",$reg->descripcion);
+                $reg->descripcion = preg_replace("/[\r\n|\n|\r]+/", PHP_EOL, $reg->descripcion);
+                $buscar=array(chr(13).chr(10), "\r\n", "\n", "\r");
+                $reemplazar=array("", "", "", "");
+                $reg->descripcion=str_ireplace($buscar,$reemplazar,$reg->descripcion);
+                $descrpJs=$reg->descripcion;
+            }
+
+            
 
             //STOCK BODEGA 
             $datos = array(
@@ -251,11 +271,13 @@ class ProformasController extends Controllers
                $precioDescuento='<b>'.$reg->precio.'</b>';
            }
 
+           $reg->codigo=str_replace(" ","",$reg->codigo);
+
             $data[]=array(
 
             
            
-                "0"=>'<button class="btn btn-warning" title="Agregar a carriro" onclick="agregarDetalle('."'".$reg->codigo."'".',\''.$reg->precio.'\',\''.$reg->descripcion.'\',\''.strtoupper($this->session->get('bodUsuario')).'\',\''.$reg->costo.'\',\''.$descuentoCliente.'\')"><span class="fa fa-plus"></span></button> '.
+                "0"=>'<button class="btn btn-warning" title="Agregar a carriro" onclick="agregarDetalle('."'".$reg->codigo."'".',\''.$reg->precio.'\',\''.$descrpJs.'\',\''.strtoupper($this->session->get('bodUsuario')).'\',\''.$reg->costo.'\',\''.$descuentoCliente.'\')"><span class="fa fa-plus"></span></button> '.
                 ' <button data-target="#ajax" title="Mostrar stock de todas las bodegas" data-toggle="modal" class="btn btn-info" onclick="consultarStock('."'".$reg->codigo."'".','."'".strtoupper($this->session->get('bodUsuario'))."'".',\''.$reg->precio.'\',\''.$reg->descripcion.'\',\''.$reg->costo.'\',\''.$descuentoCliente.'\')"><span class="fa fa-search"></span></button> ',
                 "1"=>$reg->codigo,
                 "2"=>$reg->descripcion,
@@ -1220,11 +1242,20 @@ class ProformasController extends Controllers
         $resp=$conf->updateMultiColum('descuento_porce_cc',$descuentoResp,'id',$this->session->get('idCarritoTemporal'));
 
         $return='1';
+        $conf= new \Models\ProformasModel($this->adapter);
         while($regSis50300=$respSis50300->fetch_object()){
             // $TotalDesc=(($regSis50300->cantidad_producto*$regSis50300->precio_producto)*$descuento)/100;
             // $TotalSubto=(($regSis50300->cantidad_producto*$regSis50300->precio_producto)-((($regSis50300->cantidad_producto*$regSis50300->precio_producto)*$descuento)/100));
+            $rsptaDesc=$conf->TieneDescuento($regSis50300->id_producto)->fetch_object();
+
+            if(!empty($rsptaDesc)){
+                $descuentoResp=(float)0;
+                $TotalDesc=(($regSis50300->precio_producto*$regSis50300->cantidad_producto)*$descuentoResp)/100;
+            }else{
+                $TotalDesc=(($regSis50300->precio_producto*$regSis50300->cantidad_producto)*$descuentoResp)/100;
+            }
             
-            $TotalDesc=(($regSis50300->precio_producto*$regSis50300->cantidad_producto)*$descuentoResp)/100;
+            
             $TotalSubto=($regSis50300->precio_producto*$regSis50300->cantidad_producto);
          
             // $TotalDesc=number_format((($descuentoResp)/100*$regSis50300->precio_producto),2,'.','');

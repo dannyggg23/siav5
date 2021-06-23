@@ -1772,6 +1772,8 @@ class GuiaController extends Controllers
                             $mail->IsHTML(true);
                             $mail->AddAddress("baleman@allparts.com.ec");
                             $mail->AddAddress("eflores@mundomotriz.com.ec");
+                            $mail->AddAddress("varaujo@allparts.com.ec");
+                            
                             $mail->Body=$html;
                             $mail->AltBody='Estimado(a) se realizo un pedido de MUNDOMOTRIZ ';
                             $exito = $mail->Send();
