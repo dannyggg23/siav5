@@ -45,6 +45,8 @@ class ProformasController extends Controllers
              'categoria'=>$regClienteModel->categoria
            
          );
+
+         $_SESSION['condicionpago']=$regClienteModel->condicionpago;
  
          //DATOS SUCURSAL
          $sucursalesModel= new \Models\SucursalesModel($this->adapter);
@@ -928,6 +930,8 @@ class ProformasController extends Controllers
             'condicionpago'=>$regClienteModel->condicionpago
         );
 
+        $_SESSION['condicionpago']=$regClienteModel->condicionpago;
+
         //DATOS SUCURSAL
         $sucursalesModel= new \Models\SucursalesModel($this->adapter);
         $respSucursalModel=$sucursalesModel->ListarSucursalesId($this->session->get('idSucursalCliente'));
@@ -1233,10 +1237,18 @@ class ProformasController extends Controllers
             $valDescuentoCarrito=$daplicar;
         }
 
+
+        
+
+        if($_SESSION['condicionpago']=='CONTADO' || $categoria=="4"){
+            $descuentoResp=(float)$valDescuentoCarrito;
+        }else{
+            $descuentoResp=(float)0;
+        }
        
       
          //die($valDescuentoCarrito);
-        $descuentoResp=(float)$valDescuentoCarrito;
+        
 
         $conf=new Entidades\Sis50200($this->adapter);
         $resp=$conf->updateMultiColum('descuento_porce_cc',$descuentoResp,'id',$this->session->get('idCarritoTemporal'));
