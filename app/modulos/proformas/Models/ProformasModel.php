@@ -62,7 +62,7 @@ class ProformasModel extends \ModeloBase {
     public function TieneDescuento($codigo){
 
         $this->precio_desc=isset($_SESSION['bdcliente'])?$_SESSION['bdcliente'].'.precio_desc':'precio_desc';
-        $query="SELECT * FROM $this->precio_desc where codigo ='$codigo'";
+        $query="SELECT * FROM $this->precio_desc where codigo ='$codigo' ";
        
         return $this->ejecutarConsulta($query);
     }

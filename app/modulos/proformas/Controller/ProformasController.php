@@ -183,9 +183,18 @@ class ProformasController extends Controllers
                 $reemplazar=array("", "", "", "");
                 $reg->descripcion=str_ireplace($buscar,$reemplazar,$reg->descripcion);
                 $descrpJs=$reg->descripcion;
-                $reg->descripcion="<p>  $reg->descripcion <strong style='color: red'>**PROMOCION $rsptaDesc->descuento % DE DESC ** </strong> </p>";
+                if($this->session->get('usuario')!='888'){
 
-                $reg->precio=$reg->precio-($reg->precio*$rsptaDesc->descuento)/100;
+                    $reg->descripcion="<p>  $reg->descripcion <em style='color: red'>**PROMOCION $rsptaDesc->descuento% DESC - <strong style='color: red'>SOLO EN $rsptaDesc->bodega</strong>** </em> </p>";
+                    if($this->session->get('bodUsuario')==$rsptaDesc->bodega){
+                        $reg->precio=$reg->precio-($reg->precio*$rsptaDesc->descuento)/100;
+                    }
+                }
+                
+                
+                
+
+                
                 
             }else{
                 $reg->descripcion=str_replace('"',"",$reg->descripcion);
@@ -1238,7 +1247,7 @@ class ProformasController extends Controllers
         }
 
 
-        
+
 
         if($_SESSION['condicionpago']=='CONTADO' || $categoria=="4"){
             $descuentoResp=(float)$valDescuentoCarrito;
