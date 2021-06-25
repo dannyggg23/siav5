@@ -289,7 +289,7 @@ class ProformasController extends Controllers
             
            
                 "0"=>'<button class="btn btn-warning" title="Agregar a carriro" onclick="agregarDetalle('."'".$reg->codigo."'".',\''.$reg->precio.'\',\''.$descrpJs.'\',\''.strtoupper($this->session->get('bodUsuario')).'\',\''.$reg->costo.'\',\''.$descuentoCliente.'\')"><span class="fa fa-plus"></span></button> '.
-                ' <button data-target="#ajax" title="Mostrar stock de todas las bodegas" data-toggle="modal" class="btn btn-info" onclick="consultarStock('."'".$reg->codigo."'".','."'".strtoupper($this->session->get('bodUsuario'))."'".',\''.$reg->precio.'\',\''.$reg->descripcion.'\',\''.$reg->costo.'\',\''.$descuentoCliente.'\')"><span class="fa fa-search"></span></button> ',
+                ' <button data-target="#ajax" title="Mostrar stock de todas las bodegas" data-toggle="modal" class="btn btn-info" onclick="consultarStock('."'".$reg->codigo."'".','."'".strtoupper($this->session->get('bodUsuario'))."'".',\''.$reg->precio.'\',\''.$descrpJs.'\',\''.$reg->costo.'\',\''.$descuentoCliente.'\')"><span class="fa fa-search"></span></button> ',
                 "1"=>$reg->codigo,
                 "2"=>$reg->descripcion,
                 "3"=>$reg->codoriginal1,
