@@ -173,6 +173,7 @@ class ProformasController extends Controllers
             $data= Array();
              while ($reg=$rspta->fetch_object()){
             $rsptaDesc=$conf->TieneDescuento($reg->codigo)->fetch_object();
+            $rsptaDescBodeg=$conf->TieneDescuento($reg->codigo);
             $descrpJs="";
 
             if(!empty($rsptaDesc)){
@@ -185,15 +186,29 @@ class ProformasController extends Controllers
                 $descrpJs=$reg->descripcion;
                 if($this->session->get('usuario')!='888'){
 
-                    $reg->descripcion="<p>  $reg->descripcion <em style='color: red'>**PROMOCION $rsptaDesc->descuento% DESC - <strong style='color: red'>SOLO EN $rsptaDesc->bodega</strong>** </em> </p>";
-                    if($this->session->get('bodUsuario')==$rsptaDesc->bodega){
-                        $reg->precio=$reg->precio-($reg->precio*$rsptaDesc->descuento)/100;
+                    $bandera=false;
+                    $descuento=0;
+                    while($rowBode=$rsptaDescBodeg->fetch_object()){
+                        if($rowBode->bodega==$this->session->get('bodUsuario')){
+                            $bandera=true;
+                            $descuento=$rowBode->descuento;
+                        }
                     }
-                }
-                
-                
-                
 
+                    if($bandera){
+                        
+                        $reg->descripcion="<p>  $reg->descripcion <em style='color: red'>**PROMOCION ".$descuento."% DESC - <strong style='color: red'>SOLO EN ".$this->session->get('bodUsuario')."</strong>** </em> </p>";
+                        
+                            $reg->precio=$reg->precio-($reg->precio*$descuento)/100;
+                    }else{
+
+                        $reg->descripcion="<p>  $reg->descripcion <em style='color: red'>**PROMOCION $rsptaDesc->descuento% DESC - <strong style='color: red'>SOLO EN ".$rsptaDesc->bodega."</strong>** </em> </p>";
+                       
+                }
+
+
+
+                }
                 
                 
             }else{
