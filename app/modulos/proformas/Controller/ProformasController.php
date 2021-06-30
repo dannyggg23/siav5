@@ -1265,7 +1265,7 @@ class ProformasController extends Controllers
 
 
 
-        if($_SESSION['condicionpago']=='CONTADO' || $categoria=="4"){
+        if( $categoria=="4"){
             $descuentoResp=(float)$valDescuentoCarrito;
         }else{
             $descuentoResp=(float)0;
