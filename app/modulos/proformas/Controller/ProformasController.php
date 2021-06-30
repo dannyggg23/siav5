@@ -1280,7 +1280,9 @@ class ProformasController extends Controllers
 
         $return='1';
         $conf= new \Models\ProformasModel($this->adapter);
+        $banderaDesc=$descuentoResp;
         while($regSis50300=$respSis50300->fetch_object()){
+            $descuentoResp=$banderaDesc;
             // $TotalDesc=(($regSis50300->cantidad_producto*$regSis50300->precio_producto)*$descuento)/100;
             // $TotalSubto=(($regSis50300->cantidad_producto*$regSis50300->precio_producto)-((($regSis50300->cantidad_producto*$regSis50300->precio_producto)*$descuento)/100));
             $rsptaDesc=$conf->TieneDescuento($regSis50300->id_producto)->fetch_object();
