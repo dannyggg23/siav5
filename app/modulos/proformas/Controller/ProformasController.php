@@ -1270,7 +1270,7 @@ class ProformasController extends Controllers
         }else{
             $descuentoResp=(float)0;
         }
-       
+        $descuentoResp=(float)10;
       
          //die($valDescuentoCarrito);
         
