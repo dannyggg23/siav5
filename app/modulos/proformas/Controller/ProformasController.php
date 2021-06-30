@@ -184,6 +184,7 @@ class ProformasController extends Controllers
                 $reemplazar=array("", "", "", "");
                 $reg->descripcion=str_ireplace($buscar,$reemplazar,$reg->descripcion);
                 $descrpJs=$reg->descripcion;
+
                 if($this->session->get('usuario')!='888'){
 
                     $bandera=false;
@@ -1285,7 +1286,9 @@ class ProformasController extends Controllers
             $rsptaDesc=$conf->TieneDescuento($regSis50300->id_producto)->fetch_object();
 
             if(!empty($rsptaDesc)){
-                $descuentoResp=(float)0;
+                if($this->session->get('usuario')!='888'){
+                    $descuentoResp=(float)0;
+                }
                 $TotalDesc=(($regSis50300->precio_producto*$regSis50300->cantidad_producto)*$descuentoResp)/100;
             }else{
                 $TotalDesc=(($regSis50300->precio_producto*$regSis50300->cantidad_producto)*$descuentoResp)/100;
