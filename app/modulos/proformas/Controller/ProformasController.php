@@ -1265,11 +1265,11 @@ class ProformasController extends Controllers
 
 
 
-        if( $categoria=="4"){
-            $descuentoResp=(float)$valDescuentoCarrito;
-        }else{
-            $descuentoResp=(float)0;
-        }
+        // if( $categoria=="4"){
+        //     $descuentoResp=(float)$valDescuentoCarrito;
+        // }else{
+        //     $descuentoResp=(float)0;
+        // }
         //$descuentoResp=(float)10;
       
          //die($valDescuentoCarrito);
