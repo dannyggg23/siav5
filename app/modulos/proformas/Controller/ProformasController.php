@@ -1266,41 +1266,41 @@ class ProformasController extends Controllers
 
 
         // if( $categoria=="4"){
-        //     $descuentoResp=(float)$valDescuentoCarrito;
+        //     $valDescuentoCarrito=(float)$valDescuentoCarrito;
         // }else{
-        //     $descuentoResp=(float)0;
+        //     $valDescuentoCarrito=(float)0;
         // }
-        //$descuentoResp=(float)10;
+        //$valDescuentoCarrito=(float)10;
       
          //die($valDescuentoCarrito);
         
 
         $conf=new Entidades\Sis50200($this->adapter);
-        $resp=$conf->updateMultiColum('descuento_porce_cc',$descuentoResp,'id',$this->session->get('idCarritoTemporal'));
+        $resp=$conf->updateMultiColum('descuento_porce_cc',$valDescuentoCarrito,'id',$this->session->get('idCarritoTemporal'));
 
         $return='1';
         $conf= new \Models\ProformasModel($this->adapter);
-        $banderaDesc=$descuentoResp;
+        $banderaDesc=$valDescuentoCarrito;
         while($regSis50300=$respSis50300->fetch_object()){
-            $descuentoResp=$banderaDesc;
+            $valDescuentoCarrito=$banderaDesc;
             // $TotalDesc=(($regSis50300->cantidad_producto*$regSis50300->precio_producto)*$descuento)/100;
             // $TotalSubto=(($regSis50300->cantidad_producto*$regSis50300->precio_producto)-((($regSis50300->cantidad_producto*$regSis50300->precio_producto)*$descuento)/100));
             $rsptaDesc=$conf->TieneDescuento($regSis50300->id_producto)->fetch_object();
 
             if(!empty($rsptaDesc)){
                 if($this->session->get('usuario')!='888'){
-                    $descuentoResp=(float)0;
+                    $valDescuentoCarrito=(float)0;
                 }
-                $TotalDesc=(($regSis50300->precio_producto*$regSis50300->cantidad_producto)*$descuentoResp)/100;
+                $TotalDesc=(($regSis50300->precio_producto*$regSis50300->cantidad_producto)*$valDescuentoCarrito)/100;
             }else{
-                $TotalDesc=(($regSis50300->precio_producto*$regSis50300->cantidad_producto)*$descuentoResp)/100;
+                $TotalDesc=(($regSis50300->precio_producto*$regSis50300->cantidad_producto)*$valDescuentoCarrito)/100;
             }
             
             
             $TotalSubto=($regSis50300->precio_producto*$regSis50300->cantidad_producto);
          
-            // $TotalDesc=number_format((($descuentoResp)/100*$regSis50300->precio_producto),2,'.','');
-            // $TotalSubto=number_format($regSis50300->precio_producto-(number_format(($descuentoResp)/100*$regSis50300->precio_producto,2,'.','')),2,'.','')*$regSis50300->cantidad_producto;
+            // $TotalDesc=number_format((($valDescuentoCarrito)/100*$regSis50300->precio_producto),2,'.','');
+            // $TotalSubto=number_format($regSis50300->precio_producto-(number_format(($valDescuentoCarrito)/100*$regSis50300->precio_producto,2,'.','')),2,'.','')*$regSis50300->cantidad_producto;
             $resp=$Sis50300->updateMultiColum('descuento_producto',$TotalDesc,'id',$regSis50300->id);
             $resp ? $return='1' : $return='0';
             $resp=$Sis50300->updateMultiColum('subtotal_producto',$TotalSubto,'id',$regSis50300->id);
