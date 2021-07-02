@@ -189,7 +189,9 @@ class ProformasController extends Controllers
 
                     $bandera=false;
                     $descuento=0;
+                    $bodegas="";
                     while($rowBode=$rsptaDescBodeg->fetch_object()){
+                        $bodegas.=$rowBode->bodega. " - ";
                         if($rowBode->bodega==$this->session->get('bodUsuario')){
                             $bandera=true;
                             $descuento=$rowBode->descuento;
@@ -198,12 +200,12 @@ class ProformasController extends Controllers
 
                     if($bandera){
                         
-                        $reg->descripcion="<p>  $reg->descripcion <em style='color: red'>**PROMOCION ".$descuento."% DESC - <strong style='color: red'>SOLO EN ".$this->session->get('bodUsuario')."</strong>** </em> </p>";
+                        $reg->descripcion="<p>  $reg->descripcion <em style='color: red'>**PROMOCION ".$descuento."% DESC - <strong style='color: red'>SOLO EN ".$bodegas."</strong>** </em> </p>";
                         
                             $reg->precio=$reg->precio-($reg->precio*$descuento)/100;
                     }else{
 
-                        $reg->descripcion="<p>  $reg->descripcion <em style='color: red'>**PROMOCION $rsptaDesc->descuento% DESC - <strong style='color: red'>SOLO EN ".$rsptaDesc->bodega."</strong>** </em> </p>";
+                        $reg->descripcion="<p>  $reg->descripcion <em style='color: red'>**PROMOCION $rsptaDesc->descuento% DESC - <strong style='color: red'>SOLO EN ".$bodegas."</strong>** </em> </p>";
                        
                 }
 
@@ -1288,8 +1290,7 @@ class ProformasController extends Controllers
             $rsptaDesc=$conf->TieneDescuento($regSis50300->id_producto)->fetch_object();
             $rsptaDescBodeg=$conf->TieneDescuento($regSis50300->id_producto);
 
-            
-
+        
 
             if(!empty($rsptaDesc)){
 
