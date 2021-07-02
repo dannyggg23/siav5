@@ -1286,11 +1286,24 @@ class ProformasController extends Controllers
             // $TotalDesc=(($regSis50300->cantidad_producto*$regSis50300->precio_producto)*$descuento)/100;
             // $TotalSubto=(($regSis50300->cantidad_producto*$regSis50300->precio_producto)-((($regSis50300->cantidad_producto*$regSis50300->precio_producto)*$descuento)/100));
             $rsptaDesc=$conf->TieneDescuento($regSis50300->id_producto)->fetch_object();
+            $rsptaDescBodeg=$conf->TieneDescuento($regSis50300->id_producto);
+
+            
+
 
             if(!empty($rsptaDesc)){
-                if($this->session->get('usuario')!='888'){
+
+                $bandera=false;
+                while($rowBode=$rsptaDescBodeg->fetch_object()){
+                    if($rowBode->bodega==$this->session->get('bodUsuario')){
+                        $bandera=true;
+                    }
+                }
+
+                if($bandera){
                     $valDescuentoCarrito=(float)0;
                 }
+                
                 $TotalDesc=(($regSis50300->precio_producto*$regSis50300->cantidad_producto)*$valDescuentoCarrito)/100;
             }else{
                 $TotalDesc=(($regSis50300->precio_producto*$regSis50300->cantidad_producto)*$valDescuentoCarrito)/100;
