@@ -1264,7 +1264,9 @@ class ProformasController extends Controllers
             $valDescuentoCarrito=$daplicar;
         }
 
-
+        if($_SESSION['condicionpago']!='CONTADO' && $categoria!="4"){
+            $valDescuentoCarrito=(float)0;
+        }
 
 
         // if( $categoria=="4"){
