@@ -341,7 +341,7 @@ function validarFechaFin3(fecha){
 
 function guardarfactura(){
 
-  if($('#idTransportistas2').val=="" || $('#txtcodigo2').val=="" || $('#fechaInicio2').val=="" || $('#fechaFin2').val==""){
+  if($('#idTransportistas2').val=="" || $('#txtcodigo2').val=="" || $('#fechaInicio2').val=="" || $('#fechaFin2').val=="" || $('#d_observacion2').val==""){
     swal.fire("ERROR", "Revise que todos los campos tengan valores", "error");
 }else{
   var idTransportistas=$('#idTransportistas2').val();
@@ -381,7 +381,7 @@ function guardarfactura(){
 function guardarGuia(){
     
 
-  if($('#idTransportistas').val=="" || $('#txtcodigo').val=="" || $('#fechaInicio').val=="" || $('#fechaFin').val==""){
+  if($('#idTransportistas').val=="" || $('#txtcodigo').val=="" || $('#fechaInicio').val=="" || $('#fechaFin').val==""  || $('#d_observacion').val==""){
       swal.fire("ERROR", "Revise que todos los campos tengan valores", "error");
   }else{
     var idTransportistas=$('#idTransportistas').val();
